@@ -13,7 +13,7 @@ The confusion matrix is saved in a folder, and the classification report is appe
 
 `Validation accuracy: 80.80%`
 
-`Test accuracy: 76.75%`
+`Test accuracy: 78.75%`
 
 ![](https://user-images.githubusercontent.com/39755678/61866163-4348ff00-af07-11e9-8fcd-c6fcc06529f3.png)
 ![](https://user-images.githubusercontent.com/39755678/61866301-81deb980-af07-11e9-9449-eec2c1d492e7.PNG)
