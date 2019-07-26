@@ -22,7 +22,7 @@ After the analysis and model training is done, the confusion matrix is saved in 
 ![](https://user-images.githubusercontent.com/39755678/61866163-4348ff00-af07-11e9-8fcd-c6fcc06529f3.png)
 ![](https://user-images.githubusercontent.com/39755678/61919839-f78b6980-af89-11e9-91a7-07cd48c7cd48.png)
 
-The code works with more number of classes for Sentiments (like, `positive`, `neutral` and `negative` for example). It will technically work for any number of classes, but of course as the number of classes increase, the accuracy will go down. 
+The code works with more number of classes for Sentiments (like, `good`, `neutral` and `bad` for example). It will technically work for any number of classes, but of course as the number of classes increase, the accuracy will go down. 
 
 `Validation accuracy: 76.34%`
 
