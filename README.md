@@ -11,11 +11,7 @@ Libraries required:
 
 The confusion matrix is saved in a folder, and the classification report is appended to a file along with the time stamp.
 
-Preprocessing...
- 10%|████████▎                                                                          | 1/10 [00:02<00:23,  2100%|█████████████████████████████████████████████████████████ █████████████████████████| 10/10 [00:02<00:00,  3.89it/s]
-==================================================================
-Time taken for pre-processing the data = 0.043014931678771975 mins
-==================================================================
+![](https://user-images.githubusercontent.com/39755678/61920373-f0655b00-af8b-11e9-932d-3c96e2e7ea77.png)
 
 `Validation accuracy: 80.80%`
 
@@ -27,7 +23,9 @@ Time taken for pre-processing the data = 0.043014931678771975 mins
 The code works with more number of classes for Sentiments (like, `positive`, `neutral` and `negative` for example). It will technically work for any number of classes, but of course as the number of classes increase, the accuracy will go down. 
 
 `Validation accuracy: 76.34%`
+
 `Test accuracy: 73.75%`
+
 ![](https://user-images.githubusercontent.com/39755678/61920108-fe66ac00-af8a-11e9-803c-b2c47eef4de0.png)
 ![](https://user-images.githubusercontent.com/39755678/61920186-4ede0980-af8b-11e9-9ab5-69038033d190.png)
 
