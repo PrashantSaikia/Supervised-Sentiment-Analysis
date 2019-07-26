@@ -11,11 +11,11 @@ Libraries required:
 
 The confusion matrix is saved in a folder, and the classification report is appended to a file along with the time stamp.
 
-`Preprocessing...
+Preprocessing...
  10%|████████▎                                                                          | 1/10 [00:02<00:23,  2100%|█████████████████████████████████████████████████████████ █████████████████████████| 10/10 [00:02<00:00,  3.89it/s]
 ==================================================================
 Time taken for pre-processing the data = 0.043014931678771975 mins
-==================================================================`
+==================================================================
 
 `Validation accuracy: 80.80%`
 
