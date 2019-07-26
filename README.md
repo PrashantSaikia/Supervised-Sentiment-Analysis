@@ -9,7 +9,7 @@ Libraries required:
 * matplotlib
 * seaborn
 
-** How to Run:** `python main.py`
+**How to Run:** `python main.py`
 
 The input dataset is preprocessed and saved in the `datasets` folder once, and for subsequent runs it skips the preprocessing step, to save time, and uses the existing preprocessed dataset.
 
