@@ -9,28 +9,28 @@ warnings.filterwarnings("ignore")
 
 # If the pre-processed dataset is not already present in the folder, load the original dataset, pre-process it and save it
 if not os.path.isfile('datasets/Pre-processed Dataset.csv'):
-    import time
+	import time
 
-    df = pd.read_csv('datasets/Dataset.csv', encoding="ISO-8859-1")
-    '''
-    The dataset is expected to have 2 columns: 
-    1. The "Text" column, whose each row contains some strings of text whose sentiment we want to anslyse.
-    2. The "Sentiment" column, whose each row contains the sentiment of the text in the same row (good, bad, neutral).	
-    '''
+	df = pd.read_csv('datasets/Dataset.csv', encoding="ISO-8859-1")
+	'''
+	The dataset is expected to have 2 columns: 
+	1. The "Text" column, whose each row contains some strings of text whose sentiment we want to anslyse.
+	2. The "Sentiment" column, whose each row contains the sentiment of the text in the same row (good, bad, neutral).	
+	'''
 
-    # Pre-process the dataset to clean it and make it suitable for analysis 
-    print('Preprocessing...')
-    t = time.time()
-    for i in range(len(df)):
-        df.Text[i] = pre_process(df.Text[i])
+	# Pre-process the dataset to clean it and make it suitable for analysis 
+	print('Preprocessing...')
+	t = time.time()
+	for i in range(len(df)):
+	    df.Text[i] = pre_process(df.Text[i])
 
-    print('==================================================================\nTime taken for pre-processing the data: {0:.2f}s\n=================================================================='.format(time.time()-t))
+	print('==============================================\nTime taken for pre-processing the data: {0:.2f}s\n=============================================='.format(time.time()-t))
 
-    df.to_csv('datasets/Pre-processed Dataset.csv', index=False)
+	df.to_csv('datasets/Pre-processed Dataset.csv', index=False)
 
 # Otherwise load the pre-processed dataset
 else:
-    df = pd.read_csv('datasets/Pre-processed Dataset.csv')
+	df = pd.read_csv('datasets/Pre-processed Dataset.csv')
 
 # shuffle the rows of the dataset
 df = df.sample(frac=1).reset_index(drop=True)
@@ -46,7 +46,7 @@ labels = [str(i) for i in labels]
 model_evaluation(X_test=X_test, test_target=test_target, target_names=labels, model=model)
 # The confusion matrix and the classification report are saved in the folder.
 
-# ========================================================= #
+# ===================================================== #
 
 # Make predictions on an unseen/new dataset
 new_df = pd.read_csv('datasets/New Dataset.csv', encoding="ISO-8859-1")
@@ -54,7 +54,7 @@ new_df = pd.read_csv('datasets/New Dataset.csv', encoding="ISO-8859-1")
 The new dataset is expected to have just 1 column: 
 The "Text" column, whose each row contains some strings of text whose sentiment we want to analyse.
 '''
-print('=========================================================\nAnalysing the new dataset.')
+print('===============================================\nAnalysing the new dataset...')
 
 # The text column in the new dataset is going to be pre-processed for the analysis. So, preserve the original text column to put back later.
 orig_text_col = new_df.Text
