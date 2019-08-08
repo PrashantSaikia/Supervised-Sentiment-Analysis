@@ -10,7 +10,6 @@ warnings.filterwarnings("ignore")
 # If the pre-processed dataset is not already present in the folder, load the original dataset, pre-process it and save it
 if not os.path.isfile('datasets/Pre-processed Dataset.csv'):
 	import time
-	from tqdm import tqdm
 
 	df = pd.read_csv('datasets/Dataset.csv', encoding="ISO-8859-1")
 	'''
@@ -22,16 +21,19 @@ if not os.path.isfile('datasets/Pre-processed Dataset.csv'):
 	# Pre-process the dataset to clean it and make it suitable for analysis 
 	print('Preprocessing...')
 	t = time.time()
-	for i in tqdm(range(10)):
+	for i in range(len(df)):
 	    df.Text[i] = pre_process(df.Text[i])
 
-	print('==================================================================\nTime taken for pre-processing the data = {} mins\n=================================================================='.format((time.time()-t)/60))
+	print('==================================================================\nTime taken for pre-processing the data: {0:.2f}s\n=================================================================='.format(time.time()-t))
 
 	df.to_csv('datasets/Pre-processed Dataset.csv', index=False)
 
 # Otherwise load the pre-processed dataset
 else:
 	df = pd.read_csv('datasets/Pre-processed Dataset.csv')
+
+# shuffle the rows of the dataset
+df = df.sample(frac=1).reset_index(drop=True)
 
 # Do the sentiment analysis and check model accuracy
 val_acc, test_acc, X_test, test_target, model, ngram_vectorizer = analyse_sentiment(df)
@@ -47,11 +49,15 @@ model_evaluation(X_test=X_test, test_target=test_target, target_names=labels, mo
 # ========================================================= #
 
 # Make predictions on an unseen/new dataset
-new_df = pd.read_csv('datasets/New Dataset.csv') # , encoding="ISO-8859-1"
+new_df = pd.read_csv('datasets/New Dataset.csv', encoding="ISO-8859-1")
 '''
 The new dataset is expected to have just 1 column: 
 The "Text" column, whose each row contains some strings of text whose sentiment we want to analyse.
 '''
+print('=========================================================\nAnalysing the new dataset.')
+
+# The text column in the new dataset is going to be pre-processed for the analysis. So, preserve the original text column to put back later.
+orig_text_col = new_df.Text
 
 # Pre-process the new dataset to clean it and make it suitable for analysis
 for i in range(len(new_df)):
@@ -65,3 +71,5 @@ features = ngram_vectorizer.transform(new_df.Text).toarray()
 new_df.Sentiment = model.predict(features)
 
 new_df.to_csv('datasets/New Dataset - Results.csv', index=False)
+new_df.Text = orig_text_col
+print('Done.')
