@@ -22,9 +22,7 @@ if not os.path.isfile('datasets/Pre-processed Dataset.csv'):
     print('Preprocessing...')
     t = time.time()
     df.text= df.text.apply(pre_process)
-
-	print('==================================================================\nTime taken for pre-processing the data = {0:.2f} seconds.\n=================================================================='.format(time.time()-t))
-
+    print('==================================================================\nTime taken for pre-processing the data = {0:.2f} seconds.\n=================================================================='.format(time.time()-t))
     df.to_csv('datasets/Pre-processed Dataset.csv', index=False)
 
 # Otherwise load the pre-processed dataset
