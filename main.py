@@ -21,10 +21,9 @@ if not os.path.isfile('datasets/Pre-processed Dataset.csv'):
     # Pre-process the dataset to clean it and make it suitable for analysis 
     print('Preprocessing...')
     t = time.time()
-    for i in range(len(df)):
-        df.Text[i] = pre_process(df.Text[i])
+    df.text= df.text.apply(pre_process)
 
-    print('=======================================================\nTime taken for pre-processing the training data: {0:.2f}s\n======================================================='.format(time.time()-t))
+	print('==================================================================\nTime taken for pre-processing the data = {0:.2f} seconds.\n=================================================================='.format(time.time()-t))
 
     df.to_csv('datasets/Pre-processed Dataset.csv', index=False)
 
